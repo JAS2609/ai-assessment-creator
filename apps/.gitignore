@@ -1,0 +1,15 @@
+# Root
+node_modules/
+.env*
+.env.local
+.env.example
+
+# Server
+apps/server/node_modules/
+apps/server/dist/
+apps/server/.env
+
+# Web
+apps/web/node_modules/
+apps/web/.next/
+apps/web/.env.local
