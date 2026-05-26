@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Sidebar } from '@/components/Sidebar';
 import { TopBar } from '@/components/Topbar';
+import { MobileTopBar, MobileBottomBar } from '@/components/MobileNav';
 import { useAssignmentStore, QuestionRow, QuestionType } from '@/store/assignmentStore';
 import { extractTextFromPDF } from '@/utils/extractPdfText';
 import { Upload, X, Plus, Minus, Calendar } from 'lucide-react';
@@ -135,8 +136,11 @@ export default function CreateAssignmentPage() {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       <div className="flex-1 md:ml-64 flex flex-col min-h-screen">
-        <TopBar title="Create Assignment" />
-        <main className="flex-1 p-4 sm:p-6 max-w-3xl mx-auto w-full">
+        <div className="hidden md:block">
+          <TopBar title="Create Assignment" />
+        </div>
+        <MobileTopBar />
+        <main className="flex-1 p-3 sm:p-6 pb-28 md:pb-6 max-w-3xl mx-auto w-full">
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-xl font-bold text-gray-900">Create Assignment</h1>
@@ -149,7 +153,7 @@ export default function CreateAssignmentPage() {
           </div>
 
           <div className="bg-white rounded-2xl border border-gray-100 p-6 sm:p-8 shadow-sm space-y-6">
-            <div>
+            <div className="overflow-hidden">
               <h2 className="font-semibold text-gray-900">Assignment Details</h2>
               <p className="text-xs text-gray-400 mt-0.5">Basic information about your assignment</p>
             </div>
@@ -237,7 +241,7 @@ export default function CreateAssignmentPage() {
 
             {/* Question Types */}
             <div>
-              <div className="grid grid-cols-12 gap-2 mb-2 text-xs font-medium text-gray-500 px-1">
+              <div className="hidden sm:grid grid-cols-12 gap-2 mb-2 text-xs font-medium text-gray-500 px-1">
                 <div className="col-span-6">Question Type</div>
                 <div className="col-span-3 text-center">No. of Questions</div>
                 <div className="col-span-3 text-center">Marks</div>
@@ -246,8 +250,8 @@ export default function CreateAssignmentPage() {
               <div className="space-y-3">
                 {form.questionRows.map((row) => (
                   <div key={row.id}
-                    className="grid grid-cols-12 gap-2 items-center bg-gray-50 rounded-xl p-3">
-                    <div className="col-span-6 flex items-center gap-2">
+                    className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center bg-gray-50 rounded-xl p-3">
+                    <div className="sm:col-span-6 flex items-center gap-2">
                       <select
                         value={row.type}
                         onChange={(e) => updateRow(row.id, 'type', e.target.value as QuestionType)}
@@ -267,10 +271,10 @@ export default function CreateAssignmentPage() {
                         <X size={14} />
                       </button>
                     </div>
-                    <div className="col-span-3 flex justify-center">
+                    <div className="sm:col-span-3 flex justify-between sm:justify-center">
                       <Counter value={row.count} onChange={(v) => updateRow(row.id, 'count', v)} />
                     </div>
-                    <div className="col-span-3 flex justify-center">
+                    <div className="sm:col-span-3 flex justify-between sm:justify-center">
                       <Counter value={row.marks} onChange={(v) => updateRow(row.id, 'marks', v)} />
                     </div>
                   </div>
@@ -289,7 +293,7 @@ export default function CreateAssignmentPage() {
                 Add Question Type
               </button>
 
-              <div className="flex justify-end gap-6 mt-4 text-sm text-gray-600">
+              <div className="flex flex-col items-end sm:flex-row justify-end gap-2 sm:gap-6 mt-4 text-sm text-gray-600">
                 <span>Total Questions : <strong className="text-gray-900">{totalQuestions}</strong></span>
                 <span>Total Marks : <strong className="text-gray-900">{totalMarks}</strong></span>
               </div>
@@ -325,7 +329,7 @@ export default function CreateAssignmentPage() {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between mt-6 pb-8">
+          <div className="flex justify-between mt-6 pb-8 gap-3">
             <button
               onClick={() => router.back()}
               className="flex items-center gap-2 px-5 py-2.5 border border-gray-200 rounded-full
@@ -343,6 +347,7 @@ export default function CreateAssignmentPage() {
             </button>
           </div>
         </main>
+        <MobileBottomBar />
       </div>
     </div>
   );
