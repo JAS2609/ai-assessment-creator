@@ -18,7 +18,6 @@ interface Assignment {
 function EmptyState() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-5 py-24">
-      {/* Illustration placeholder */}
       <div className="relative w-36 h-36">
         <div className="w-full h-full rounded-full bg-white/60 flex items-center justify-center"
           style={{ boxShadow: '0px 8px 32px 0px #00000018' }}>
@@ -36,7 +35,6 @@ function EmptyState() {
             </div>
           </div>
         </div>
-        {/* Sparkles */}
         <span className="absolute top-1 right-2 text-purple-400 text-xs">✦</span>
         <span className="absolute bottom-2 left-1 text-blue-300 text-xs">✦</span>
       </div>

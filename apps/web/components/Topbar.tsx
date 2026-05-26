@@ -25,7 +25,6 @@ export function TopBar({
          style={{ boxShadow: '0px 4px 12px 0px #0000001A' }}
       >
         
-        {/* Left Section */}
         <div className="flex items-center gap-4">
           <button className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white transition">
             <ArrowLeft size={22} className="text-[#555]" />
@@ -46,8 +45,6 @@ export function TopBar({
             )}
           </div>
         </div>
-
-        {/* Right Section */}
         <div className="flex items-center gap-4">
           <button className="relative p-2 rounded-full hover:bg-white transition">
             <Bell size={22} className="text-[#444]" />

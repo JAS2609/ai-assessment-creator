@@ -10,7 +10,7 @@ async function getResult(id: string) {
       { cache: 'no-store' }
     );
     if (res.ok) return res.json();
-    await new Promise(r => setTimeout(r, 1000)); // wait 1s and retry
+    await new Promise(r => setTimeout(r, 1000));
   }
   return null;
 }

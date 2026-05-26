@@ -29,7 +29,6 @@ export function Sidebar() {
       className="hidden md:flex flex-col w-[260px] min-h-screen bg-white fixed left-2 top-2 bottom-9 z-20  rounded-2xl p-0.5"
       style={{ boxShadow: '0px 32px 48px 0px #00000033, 0px 16px 48px 0px #0000001F' }}
     >
-      {/* Logo */}
      <div className="px-5 pt-6 pb-5">
   <div className="flex items-center gap-2.5">
     <div className="w-10 h-[60px] flex items-center justify-center">
@@ -46,7 +45,6 @@ export function Sidebar() {
           </span>
         </div>
       </div>
-      {/* Create Assignment — gradient border button */}
       <div className="px-4 pb-5">
         <Link
           href="/assignments/create"
@@ -65,7 +63,6 @@ export function Sidebar() {
         </Link>
       </div>
 
-      {/* Nav */}
       <nav className="flex-1 px-3 space-y-0.5">
         {navItems.map(({ label, href, icon: Icon, badge }) => {
           const active = pathname === href || (href !== '/' && pathname.startsWith(href));
@@ -96,8 +93,6 @@ export function Sidebar() {
           );
         })}
       </nav>
-
-      {/* Bottom */}
       <div className="px-3 pb-5">
         <Link
           href="/settings"
@@ -108,7 +103,6 @@ export function Sidebar() {
           Settings
         </Link>
 
-        {/* School card */}
         <div
           className="flex items-center gap-3 px-3 py-3 rounded-2xl mt-1"
           style={{ backgroundColor: '#F0F0F0' }}

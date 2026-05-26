@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+
 import { useParams } from 'next/navigation';
 import { useAssignmentSocket } from '@/hooks/useAssignmentSocket';
 import { useAssignmentStore } from '@/store/assignmentStore';
@@ -20,7 +20,6 @@ export default function GeneratingPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-10 max-w-md w-full text-center">
-        {/* Spinner */}
         <div className="w-16 h-16 rounded-full border-4 border-gray-100 border-t-orange-500
                         animate-spin mx-auto mb-6" />
 
@@ -32,8 +31,6 @@ export default function GeneratingPage() {
             ? 'Something went wrong. Please go back and try again.'
             : 'AI is crafting questions based on your requirements.'}
         </p>
-
-        {/* Steps */}
         <div className="space-y-3 text-left">
           {steps.map((step, i) => {
             const done = currentIdx > i;
