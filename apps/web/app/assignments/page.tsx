@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Sidebar } from '@/components/Sidebar';
 import { TopBar } from '@/components/Topbar';
+import { MobileTopBar, MobileBottomBar } from '@/components/MobileNav';
 import { Plus, Search, SlidersHorizontal, MoreVertical, Trash2, Eye } from 'lucide-react';
 
 interface Assignment {
@@ -159,9 +160,12 @@ export default function AssignmentsPage() {
       <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       <div className="flex-1 md:ml-64 flex flex-col min-h-screen">
-        <TopBar title=" Assignment" />
+        <div className="hidden md:block">
+          <TopBar title=" Assignment" />
+        </div>
+        <MobileTopBar />
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 sm:p-6 pb-28 md:pb-6">
           {loading ? (
             <div className="flex items-center justify-center h-64">
               <div className="w-8 h-8 rounded-full border-4 border-gray-300 border-t-orange-500 animate-spin" />
@@ -181,7 +185,7 @@ export default function AssignmentsPage() {
               </div>
 
               {/* Filter + Search */}
-              <div className="flex gap-3 mb-6 mt-4">
+              <div className="flex flex-col sm:flex-row gap-3 mb-6 mt-4">
                 <button
                   className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl
                              text-sm text-gray-600 hover:bg-gray-50 transition-colors"
@@ -212,11 +216,11 @@ export default function AssignmentsPage() {
                   No assignments match your search.
                 </p>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                   {filtered.map((a) => (
                     <AssignmentCard key={a._id} assignment={a} />
                   ))}
-                  <div className="fixed bottom-7 left-1/2 -translate-x-1/2 md:left-auto md:right-7 md:translate-x-0">
+                  <div className="hidden md:block fixed bottom-7 left-1/2 -translate-x-1/2 md:left-auto md:right-7 md:translate-x-0">
                     <Link
                       href="/assignments/create"
                       className="flex items-center gap-2 text-white text-sm font-semibold
@@ -238,6 +242,7 @@ export default function AssignmentsPage() {
         </main>
 
         
+        <MobileBottomBar />
       </div>
     </div>
   );
