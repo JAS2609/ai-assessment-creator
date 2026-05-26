@@ -12,11 +12,7 @@ import './workers/generationWorker';
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
-server.on('upgrade', (request, socket, head) => {
-  wss.handleUpgrade(request, socket, head, (ws) => {
-    wss.emit('connection', ws, request);
-  });
-});
+
 app.use(cors({
   origin: [
     'http://localhost:3000',
