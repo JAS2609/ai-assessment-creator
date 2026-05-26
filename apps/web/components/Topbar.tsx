@@ -80,7 +80,7 @@ export function TopBar({
           >
             <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
               <img
-                src="/avatar.png"
+                src="/Avatar.png"
                 alt="John Doe"
                 className="w-full h-full object-cover"
               />
